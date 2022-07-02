@@ -10,5 +10,9 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^2.9.11"
+    },
+    "dependencies": {
+        "bootstrap": "^5.2.0-beta1",
+        "chart.js": "^3.8.0"
     }
 }
