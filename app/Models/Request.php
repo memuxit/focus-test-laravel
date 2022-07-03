@@ -10,6 +10,11 @@ class Request extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public function populationYears(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PopulationYear::class);
+    }
+
     /**
      * The table associated with the model.
      *

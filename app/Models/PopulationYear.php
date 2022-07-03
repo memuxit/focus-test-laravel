@@ -24,6 +24,11 @@ class PopulationYear extends Model
         'request_id',
     ];
 
+    public function request(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Request::class);
+    }
+
     /**
      * The table associated with the model.
      *
