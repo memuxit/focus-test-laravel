@@ -48,6 +48,7 @@ class Utilities
             $population = $request->populationYears()->get();
 
             $cacheLifetime = env('CACHE_LIFETIME');
+
             Cache::put('population', $population, $cacheLifetime);
         }
 
@@ -86,6 +87,11 @@ class Utilities
                 $request->populationYears()->saveMany($populationYears->sortBy(['year', 'asc']));
 
                 DB::commit();
+
+                $cacheLifetime = env('CACHE_LIFETIME');
+
+                Cache::flush();
+                Cache::put('population', $request->populationYears()->get(), $cacheLifetime);
 
                 event(new PopulationUpdated($request->populationYears()->get()));
             } catch (\Exception) {
