@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Population - USA</title>
-    @vite(['resources/js/app.js'])
 </head>
 <body class="py-4">
 <div class="container">
@@ -14,6 +13,7 @@
     <div class="row mt-4">
         <div class="col-4">
             <x-table/>
+            <x-refresh/>
         </div>
         <div class="col-8">
             <x-chart/>
@@ -21,4 +21,5 @@
     </div>
 </div>
 </body>
+@vite('resources/js/app.js')
 </html>
