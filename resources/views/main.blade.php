@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Population - USA</title>
+    @vite('resources/css/app.js')
 </head>
 <body class="py-4">
 <div class="container">
