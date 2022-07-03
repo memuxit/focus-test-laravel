@@ -1,64 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Population of USA
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+_Application that allows obtaining the population of the USA in recent years_
 
-## About Laravel
+## 🚀 Getting Started
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Just place the following line in your terminal to download the project:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+git clone https://github.com/memuxit/focus-test-laravel.git
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+See **Deployment** for notes on how to deploy the project on a live system.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📋 Pre-requisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+To execute this project, it is necessary to have the following software installed:
 
-## Laravel Sponsors
+```
+Apache 2.4.54
+MySQL 5.7.37
+PHP 8.1.7
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 🔧 Installing
 
-### Premium Partners
+_It is assumed that you already have the prerequisites installed, so the installation of the tools and the configuration of the project for its correct operation are briefly explained._
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+##### Composer
 
-## Contributing
+The steps to install composer are different depending on the operating system, but the most appropriate is to visit the [official page](https://getcomposer.org/), download and install the tool, then check the installation by entering the console and running:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+composer --version
 
-## Code of Conduct
+In my case, executing the previous command returns me the following output:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Composer version 2.3.7 2022-06-06 16:43:28
+```
 
-## Security Vulnerabilities
+In your case it may be different version.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+##### Node
 
-## License
+The steps to install node are different depending on the operating system, but the most appropriate is to visit the [official page](https://nodejs.org/), download and install the tool, then check the installation by entering the console and running:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+node --version
+
+In my case, executing the previous command returns me the following output:
+
+v16.15.0
+```
+
+```
+npm --version
+
+In my case, executing the previous command returns me the following output:
+
+8.10.0
+```
+
+In your case it may be different version.
+
+##### Installing PHP dependencies
+
+Once the tools are installed, and the project has been downloaded, we enter the root of it, and execute the following command, which installs all the necessary dependencies for the correct operation of the project:
+
+```
+composer install
+```
+
+##### Installing NPM dependencies
+
+Once the tools are installed, and the project has been downloaded, we enter the root of it, and execute the following command, which installs all the necessary dependencies for the correct operation of the project:
+
+```
+npm install
+```
+
+_With the above, we already have the dependencies installed, only some configurations are needed._
+
+##### Configuring application
+
+We create a file called .ENV at the root of the project, we visit [this site](https://github.com/laravel/laravel/blob/9.x/.env.example) and we can see the basic configuration, so just copy and paste that information and adapt it to our need.
+
+It is important to emphasize that certain values have been used for the application to work correctly with HTTP requests and websockets, so I share that information so that it can be added and/or updated to the .ENV file.
+
+```
+POPULATION_URL=https://datausa.io/api/data
+GUZZLE_TIMEOUT=5
+CACHE_LIFETIME=120
+VITE_CHANNEL=population
+VITE_EVENT=population-updated
+
+BROADCAST_DRIVER=pusher
+
+PUSHER_APP_ID=1432032
+PUSHER_APP_KEY=15e39392bfa18eeefd67
+PUSHER_APP_SECRET=00798034f8e4cde34d71
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=us2
+```
+
+## 📦 Execution
+
+- The first thing is that we must have installed the prerequisites, tools, dependencies and configured the application.
+- Then we must create a database, in the repository a script for its creation is attached in case you want to use it.
+- Next we must execute the respective migrations, we do that with the command:
+```
+php artisan migrate
+```
+- Now we can run the laravel command to get the population of USA:
+```
+php artisan population:get
+```
+- We can run the application locally to see the results of that information using the following command:
+```
+php artisan serve
+```
+- With the previous command we can access the application through the following link: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+***Important:*** *The application has a button in case you need to refresh the information, in addition to that, every time the command is executed to obtain the population, the application will be automatically updated through websockets*
+
+## ⚒️ Built With
+
+* [Laravel](https://laravel.com/) - Web framework used
+* [Composer](https://getcomposer.org/) - PHP dependency manager
+* [Node](https://nodejs.org/) - JavaScript execution environment
+
+## Authors ✒️
+
+* **Guillermo Rafael Vasquez Castaneda** - *Project developer* - [MeMuXiT](https://github.com/memuxit)
