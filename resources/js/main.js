@@ -3,10 +3,6 @@ import {destroyChart, generateChart} from "./functions/chart";
 import {destroyRows, fillTable} from "./functions/table";
 
 
-const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
-    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER
-});
-const channel = pusher.subscribe(import.meta.env.VITE_CHANNEL);
 const refreshButton = document.getElementById('refresh-btn');
 const btnIcon = document.getElementById('btn-icon');
 
@@ -55,10 +51,11 @@ window.addEventListener('load', function () {
 
 refreshButton.addEventListener('click', () => getPopulation());
 
-channel.bind(import.meta.env.VITE_EVENT, message => {
-    fillTable(message.population);
-    generateChart(message.population);
-    Notify.success('The information was obtained correctly', {
-        timeout: 3000
+Echo.channel(import.meta.env.VITE_CHANNEL)
+    .listen(`.${import.meta.env.VITE_EVENT}`, message => {
+        fillTable(message.population);
+        generateChart(message.population);
+        Notify.success('The information was obtained correctly', {
+            timeout: 3000
+        });
     });
-});
