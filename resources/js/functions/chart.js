@@ -16,9 +16,17 @@ export const generateChart = population => {
     if (chart === undefined) {
         createChart(population);
     } else {
+        ctx.style.display = 'block';
         updateChart(population);
     }
 };
+
+/**
+ * Destroy the existing chart
+ */
+export const destroyChart = () => {
+    ctx.style.display = 'none';
+}
 
 /**
  * Create a new chart

@@ -6,7 +6,7 @@ const table = document.getElementById('population-table');
  * @param population
  */
 export const fillTable = population => {
-    table.removeChild(table.getElementsByTagName('tbody')[0]);
+    destroyRows();
 
     const tblBody = document.createElement('tbody');
     tblBody.classList.add('text-end');
@@ -23,4 +23,15 @@ export const fillTable = population => {
     }
 
     table.appendChild(tblBody);
+};
+
+/**
+ * Destroy tbody rows
+ */
+export const destroyRows = () => {
+    const tbody = table.getElementsByTagName('tbody')[0];
+
+    if (tbody !== undefined) {
+        table.removeChild(table.getElementsByTagName('tbody')[0]);
+    }
 };
