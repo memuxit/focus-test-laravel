@@ -117,6 +117,10 @@ php artisan migrate
 ```
 php artisan population:get
 ```
+- We must compile the assets to have the styles and scripts functional, for this we execute the following command:
+```
+npm run build
+``` 
 - We can run the application locally to see the results of that information using the following command:
 ```
 php artisan serve
