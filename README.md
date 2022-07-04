@@ -109,6 +109,10 @@ PUSHER_APP_CLUSTER=us2
 
 - The first thing is that we must have installed the prerequisites, tools, dependencies and configured the application.
 - Then we must create a database, in the repository a script for its creation is attached in case you want to use it.
+- We generate the application encryption key using the following command:
+```
+php artisan key:generate
+```
 - Next we must execute the respective migrations, we do that with the command:
 ```
 php artisan migrate
@@ -120,7 +124,7 @@ php artisan population:get
 - We must compile the assets to have the styles and scripts functional, for this we execute the following command:
 ```
 npm run build
-``` 
+```
 - We can run the application locally to see the results of that information using the following command:
 ```
 php artisan serve
